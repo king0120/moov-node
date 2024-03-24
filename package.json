@@ -1,6 +1,6 @@
 {
     "name": "@king0120/moov-api",
-    "version": "1.0.0",
+    "version": "0.0.0",
     "description": "Zero dependency SDK for working with Moov Financial",
     "module": "dist/index.mjs",
     "types": "dist/index.d.mts",
