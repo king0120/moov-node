@@ -21,6 +21,10 @@ Make sure to include the following environment variables in your project:
 
 ## Documentation
 
+<!-- INSERT GENERATED DOCS START -->
+
+<!-- INSERT GENERATED DOCS END -->
+
 ## Documentation generation
 
 To generate the documentation, run

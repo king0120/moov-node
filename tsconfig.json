@@ -26,11 +26,11 @@
         "moduleResolution": "Node"
     },
     "typedocOptions": {
-        "externalPattern": "**/node_modules/**",
-
+        "commentStyle": "all",
         "entryPoints": [
             "src/index.ts"
         ],
+        "externalPattern": "**/node_modules/**",
         "out": "docs"
     }
 }

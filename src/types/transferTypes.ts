@@ -1,4 +1,5 @@
 import {Address} from "./index";
+import {Wallet} from "./walletTypes";
 
 export type CardDetails = {
     // An optional override of the default card statement descriptor for a single transfer
@@ -37,10 +38,6 @@ export type BankAccount = {
     lastFourAccountNumber: string;
 }
 
-export type Wallet = {
-    // Wallet identifier
-    walletID: string;
-}
 
 export type CardExpiration = {
     // 2 characters

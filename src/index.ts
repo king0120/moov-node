@@ -8,3 +8,7 @@ export {paymentMethods} from './paymentMethods'
 export {representatives} from './representatives'
 export {transfers} from './transfers'
 export {wallets} from './wallets'
+
+export * from './types/index'
+export * from './types/transferTypes'
+export * from './types/walletTypes'
