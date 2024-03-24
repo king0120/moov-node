@@ -1,6 +1,6 @@
-import {check, checkString} from "../utils/checks";
-import {Err} from "../utils/errors";
-import {wrappedFetch, wrappedFetchBase} from "../utils/wrappedFetch";
+import {check, checkString} from "./utils/checks";
+import {Err} from "./utils/errors";
+import {wrappedFetch, wrappedFetchBase} from "./utils/wrappedFetch";
 
 export const enrichments = {
     getAvatar: async (accountID: string) => {

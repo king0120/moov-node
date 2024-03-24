@@ -1,6 +1,6 @@
-import {wrappedFetch} from "../utils/wrappedFetch";
-import {check, checkString} from "../utils/checks";
-import {Err} from "../utils/errors";
+import {wrappedFetch} from "./utils/wrappedFetch";
+import {check, checkString} from "./utils/checks";
+import {Err} from "./utils/errors";
 
 export type CARD_BRAND = 'American Express' | 'Discover' | 'MasterCard' | 'Visa'
 export type CARD_TYPE = 'credit' | 'debit' | 'prepaid' | 'unknown'

@@ -1,6 +1,6 @@
-import {wrappedFetch} from "../utils/wrappedFetch";
-import {checkString} from "../utils/checks";
-import {Err} from "../utils/errors";
+import {wrappedFetch} from "./utils/wrappedFetch";
+import {checkString} from "./utils/checks";
+import {Err} from "./utils/errors";
 
 export const wallets = {
     async get(accountID, walletID) {

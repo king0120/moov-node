@@ -1,39 +1,39 @@
 {
-    "name": "@king0120/moov-api",
-    "version": "0.0.0",
-    "description": "Zero dependency SDK for working with Moov Financial",
-    "module": "dist/index.mjs",
-    "types": "dist/index.d.mts",
-    "engines": {
-        "node": ">=20"
-    },
-    "keywords": [
-        "nodejs",
-        "sdk"
-    ],
-    "author": {
-        "name": "Jamie Wartell-King",
-        "email": "jamieking@flashtract.com"
-    },
-    "license": "Apache-2.0",
-    "files": [
-        "dist/**/*",
-        "src/**/*"
-    ],
-    "scripts": {
-        "scratchpad": "vite-node src/scratchPad.ts",
-        "build": "tsup",
-        "test": "vitest"
-    },
-    "devDependencies": {
-        "@microsoft/api-extractor": "^7.43.0",
-        "@types/node": "^20.11.30",
-        "rollup-plugin-node-externals": "^7.1.0",
-        "tsup": "^8.0.2",
-        "typescript": "^4.5.5",
-        "vitest": "^1.4.0"
-    },
-    "dependencies": {
-        "dotenv": "16.4.5"
-    }
+  "name": "@king0120/moov-api",
+  "version": "0.0.1",
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": "Zero dependency SDK for working with Moov Financial",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.mts",
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "nodejs",
+    "sdk"
+  ],
+  "author": {
+    "name": "Jamie Wartell-King",
+    "email": "jamieking@flashtract.com"
+  },
+  "license": "Apache-2.0",
+  "files": ["dist/**/*"],
+  "scripts": {
+    "scratchpad": "vite-node src/scratchPad.ts",
+    "build": "tsup",
+    "test": "vitest"
+  },
+  "devDependencies": {
+    "@microsoft/api-extractor": "^7.43.0",
+    "@types/node": "^20.11.30",
+    "rollup-plugin-node-externals": "^7.1.0",
+    "tsup": "^8.0.2",
+    "typescript": "^4.5.5",
+    "vitest": "^1.4.0"
+  },
+  "dependencies": {
+    "dotenv": "16.4.5"
+  }
 }

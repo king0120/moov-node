@@ -1,6 +1,6 @@
 export default function defineConfig(options) {
     return {
-        entry: ['src/index.ts'],
+        entry: ["src", "!src/**/__tests__/**", "!src/**/*.test.*", "!src/utils/**", "!src/types/**"],
         name: 'node-moov',
         dts: true,
         platform: 'node',

@@ -1,6 +1,6 @@
-import {wrappedFetch} from "../utils/wrappedFetch";
-import {Err} from "../utils/errors";
-import {check, checkString} from "../utils/checks";
+import {wrappedFetch} from "./utils/wrappedFetch";
+import {Err} from "./utils/errors";
+import {check, checkString} from "./utils/checks";
 
 interface BankAccountAdd {
     holderName: string;

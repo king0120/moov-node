@@ -1,6 +1,6 @@
-import {wrappedFetch} from "../utils/wrappedFetch";
-import {check} from "../utils/checks";
-import {Err} from "../utils/errors";
+import {wrappedFetch} from "./utils/wrappedFetch";
+import {check} from "./utils/checks";
+import {Err} from "./utils/errors";
 
 export const institutions = {
     async getInstitution(criteria, rail) {

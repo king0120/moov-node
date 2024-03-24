@@ -1,5 +1,5 @@
-import {wrappedFetch} from "../utils/wrappedFetch";
-import {Account} from "../types";
+import {wrappedFetch} from "./utils/wrappedFetch";
+import {Account} from "./types";
 
 
 export const accounts = {

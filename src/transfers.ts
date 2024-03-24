@@ -1,7 +1,7 @@
 import {randomUUID} from "crypto";
-import {wrappedFetch} from "../utils/wrappedFetch";
-import {check, checkString} from "../utils/checks";
-import {Err} from "../utils/errors";
+import {wrappedFetch} from "./utils/wrappedFetch";
+import {check, checkString} from "./utils/checks";
+import {Err} from "./utils/errors";
 
 export const transfers = {
     async create(transfer, idempotencyKey) {
