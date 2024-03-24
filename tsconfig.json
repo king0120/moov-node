@@ -1,6 +1,8 @@
 {
     // Change this to match your project
-    "include": ["lib/**/*", "lib2/**/*"],
+    "include": [
+        "src/**/*",
+    ],
     "compilerOptions": {
         "types": ["node"],
         "esModuleInterop": true,
@@ -13,10 +15,6 @@
         // This compiler run should
         // only output d.ts files
         "emitDeclarationOnly": true,
-        // Types should go into this directory.
-        // Removing this would place the .d.ts files
-        // next to the .js files
-        "outDir": "lib/types",
         // go to js file when using IDE functions like
         // "Go to Definition" in VSCode
         "declarationMap": true,

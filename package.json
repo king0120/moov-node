@@ -1,7 +1,7 @@
 {
-    "name": "@moovio/node",
-    "version": "1.2.2",
-    "description": "Node SDK for the Moov API and Dashboard",
+    "name": "@king0120/node",
+    "version": "1.0.0",
+    "description": "Zero dependency SDK for working with Moov Financial",
     "module": "dist/mjs/index.js",
     "main": "dist/cjs/index.js",
     "exports": {
@@ -12,61 +12,35 @@
     },
     "types": "lib/types/index.d.ts",
     "engines": {
-        "node": ">=14"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/moovfinancial/moov-node"
+        "node": ">=20"
     },
     "keywords": [
         "nodejs",
         "sdk"
     ],
     "author": {
-        "name": "Moov Financial",
-        "email": "help@moov.io"
+        "name": "Jamie Wartell-King",
+        "email": "jamieking@flashtract.com"
     },
     "license": "Apache-2.0",
-    "bugs": {
-        "url": "https://github.com/moovfinancial/moov-node/issues"
-    },
-    "homepage": "https://github.com/moovfinancial/moov-node#readme",
     "files": [
         "dist/**/*",
-        "lib/**/*"
+        "src/**/*"
     ],
     "scripts": {
-        "build": "chmod +x fixup.sh && rm -fr dist/* && tsc -p tsconfig-esm.json && tsc -p tsconfig-cjs.json && ./fixup.sh",
-        "docs": "node ./scripts/generateDocs.cjs",
-        "docs-watch": "watch \"npm run docs\" ./docs/templates",
-        "docs-clean": "rm ./docs/output/*.*",
-        "test": "ava ./lib/**/*.test.js",
-        "generate-types": "tsc",
-        "test-watch": "ava --watch ./lib/**/*.test.js"
+        "scratchpad": "vite-node src/scratchPad.ts",
+        "build": "tsup",
+        "test": "vitest"
     },
     "devDependencies": {
-        "ava": "^4.0.0",
-        "change-case": "^4.1.2",
-        "cross-env": "^7.0.3",
-        "handlebars": "^4.7.7",
-        "handlebars-helpers": "^0.9.8",
-        "jsdoc": "^4.0.2",
-        "lodash": "^4.17.21",
-        "prettier": "^2.5.1",
+        "@microsoft/api-extractor": "^7.43.0",
+        "@types/node": "^20.11.30",
+        "rollup-plugin-node-externals": "^7.1.0",
+        "tsup": "^8.0.2",
         "typescript": "^4.5.5",
-        "watch": "^0.13.0"
+        "vitest": "^1.4.0"
     },
     "dependencies": {
-        "dotenv": "^16.4.5",
-        "got-cjs": "^12.0.0",
-        "ts-node": "^10.8.0"
-    },
-    "ava": {
-        "extensions": [
-            "ts"
-        ],
-        "require": [
-            "ts-node/register"
-        ]
+        "dotenv": "16.4.5"
     }
 }

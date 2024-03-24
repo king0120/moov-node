@@ -1,7 +1,0 @@
-{
-    "compilerOptions": {
-        "noEmit": true,
-        "declaration": true
-    },
-    "include": ["lib/**/*.js", "examples/gotOptions-logging.js"]
-}

@@ -1,8 +1,0 @@
-{
-  "name": "moov-node-sdk-examples",
-  "description": "Example for Moov Node SDK",
-  "type": "module",
-  "dependencies": {
-    "@moovio/node": "^1.0.0"
-  }
-}
