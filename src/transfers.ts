@@ -2,9 +2,23 @@ import {randomUUID} from "crypto";
 import {wrappedFetch} from "./utils/wrappedFetch";
 import {check, checkString} from "./utils/checks";
 import {Err} from "./utils/errors";
+import {
+    AvailableTransferOptions,
+    Refund,
+    Transfer,
+    TransferCreate,
+    TransferListCriteria,
+    TransferOptionsCriteria,
+    TransferResponse
+} from "./types/transferTypes";
 
 export const transfers = {
-    async create(transfer, idempotencyKey) {
+    /**
+     * Creates a transfer to move money from a source to a destination.
+     *
+     * The `TRANSFERS_WRITE` scope enum is required when making a request from the browser.
+     */
+    async create(transfer: TransferCreate, idempotencyKey: string): Promise<TransferResponse> {
         check(transfer).or(Err.MISSING_TRANSFER);
         idempotencyKey = idempotencyKey || randomUUID();
         return wrappedFetch(`transfers`, {
@@ -15,7 +29,12 @@ export const transfers = {
             body: JSON.stringify(transfer),
         });
     },
-    async list(criteria) {
+    /**
+     * Lists transfers that match the given criteria.
+     *
+     * The `TRANSFERS_READ` scope enum is required when making a request from the browser.
+     */
+    async list(criteria: TransferListCriteria): Promise<Transfer[]> {
         const options = {
             url: "transfers",
             method: "GET",
@@ -43,25 +62,45 @@ export const transfers = {
         }
         return wrappedFetch(`transfers?${params.toString()}`, options);
     },
-    async get(transferID) {
+    /**
+     * Gets the details of a transfer.
+     *
+     * The `TRANSFERS_READ` scope enum is required when making a request from the browser.
+     */
+    async get(transferID: string): Promise<Transfer> {
         checkString(transferID).or(Err.MISSING_TRANSFER_ID);
         return wrappedFetch(`transfers/${transferID}`);
     },
-    async updateMetadata(transferID, metadata) {
+    /**
+     * Update the metadata on a transfer.
+     *
+     * The `TRANSFERS_WRITE` scope enum is required when making a request from the browser.
+     */
+    async updateMetadata(transferID: string, metadata: Record<string, string>): Promise<Transfer> {
         checkString(transferID).or(Err.MISSING_TRANSFER_ID);
         return wrappedFetch(`transfers/${transferID}`, {
             method: "PATCH",
             body: JSON.stringify({metadata}),
         });
     },
-    async getTransferOptions(transferOptionsCriteria) {
+    /**
+     * Gets the available payment options for a transfer.
+     *
+     * The `TRANSFERS_READ` scope enum is required when making a request from the browser.
+     */
+    async getTransferOptions(transferOptionsCriteria: TransferOptionsCriteria): Promise<AvailableTransferOptions> {
         check(transferOptionsCriteria).or(Err.MISSING_TRANSFER_OPTION_CRITERIA);
         return wrappedFetch(`transfer-options`, {
             method: "POST",
             body: JSON.stringify(transferOptionsCriteria),
         });
     },
-    async refund(transferID, idempotencyKey, refund) {
+    /**
+     * Initiate a refund for a card transfer.
+     *
+     * The `TRANSFERS_WRITE` scope enum is required when making a request from the browser.
+     */
+    async refund(transferID: string, idempotencyKey: string, refund?: { amount: number }): Promise<TransferResponse> {
         checkString(transferID).or(Err.MISSING_TRANSFER_ID);
 
         idempotencyKey = idempotencyKey || randomUUID();
@@ -73,11 +112,21 @@ export const transfers = {
             body: JSON.stringify(refund),
         });
     },
-    async listRefunds(transferID) {
+    /**
+     * List refunds for a card transfer.
+     *
+     * The `TRANSFERS_READ` scope enum is required when making a request from the browser.
+     */
+    async listRefunds(transferID: string): Promise<Refund[]> {
         checkString(transferID).or(Err.MISSING_TRANSFER_ID);
         return wrappedFetch(`transfers/${transferID}/refunds`);
     },
-    async getRefund(transferID, refundID) {
+    /**
+     * Get details of a specific refund.
+     *
+     * The `TRANSFERS_READ` scope enum is required when making a request from the browser.
+     */
+    async getRefund(transferID: string, refundID: string): Promise<Refund> {
         checkString(transferID).or(Err.MISSING_TRANSFER_ID);
         checkString(refundID).or(Err.MISSING_REFUND_ID);
         return wrappedFetch(`transfers/${transferID}/refunds/${refundID}`);
