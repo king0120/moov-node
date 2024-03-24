@@ -7,7 +7,7 @@ export default function defineConfig(options) {
         tsconfig: 'tsconfig.json',
         format: 'esm',
         skipNodeModulesBundle: true,
-        sourcemap: true,
+        sourcemap: false,
         treeshake: true,
         clean: true,
         minify: true,
