@@ -2,16 +2,41 @@ import {wrappedFetch} from "./utils/wrappedFetch";
 import {Err} from "./utils/errors";
 import {check, checkString} from "./utils/checks";
 
-interface BankAccountAdd {
+export interface BankAccountAdd {
     holderName: string;
     holderType: 'individual' | 'business';
     routingNumber: string;
     accountNumber: string;
     bankAccountType?: 'checking' | 'savings' | 'unknown';
 }
+export interface BankAccount {
+    // Bank Account identifier
+    bankAccountID: string;
+    // Fingerprint of Bank Account
+    fingerprint: string;
+    // The bank account status
+    status: 'new' | 'verified' | 'verificationFailed' | 'pending' | 'errored';
+    // Name of the bank account holder
+    holderName: string;
+    // The type of holder on a funding source
+    holderType: 'individual' | 'business';
+    // Name of the bank
+    bankName: string;
+    // The bank account type
+    bankAccountType: 'checking' | 'savings' | 'unknown';
+    // Bank account routing number
+    routingNumber: string;
+    // Last four digits of the bank account number
+    lastFourAccountNumber: string;
+}
 
 export const bankAccounts = {
-    async link(accountID: string, bankAccount: BankAccountAdd, plaidToken: string, mxAuthorizationCode: string) {
+    /**
+     * Link a bank account to a Moov account
+     *
+     * The `BANK_ACCOUNTS_WRITE` scope enum is required when making a request from the browser.
+     */
+    async link(accountID: string, bankAccount: BankAccountAdd, plaidToken: string, mxAuthorizationCode: string): Promise<BankAccount> {
         let payload = {};
         if (!accountID) {
             console.log(Err.MISSING_ACCOUNT_ID);
@@ -61,22 +86,42 @@ export const bankAccounts = {
             body: JSON.stringify(payload),
         });
     },
-    async get(accountID: string, bankAccountID: string) {
+    /**
+     * Retrieve bank account details (i.e. routing number or account type) associated with a specific Moov account.
+     *
+     * The `BANK_ACCOUNTS_READ` scope enum is required when making a request from the browser.
+     */
+    async get(accountID: string, bankAccountID: string): Promise<BankAccount> {
         checkString(accountID).or(Err.MISSING_ACCOUNT_ID);
         checkString(bankAccountID).or(Err.MISSING_BANK_ACCOUNT_ID);
         return wrappedFetch(`accounts/${accountID}/bank-accounts/${bankAccountID}`);
     },
-    async list(accountID) {
+    /**
+     * List all the bank accounts associated with a particular Moov account.
+     *
+     * The `BANK_ACCOUNTS_READ` scope enum is required when making a request from the browser.
+     */
+    async list(accountID: string): Promise<BankAccount[]> {
         checkString(accountID).or(Err.MISSING_ACCOUNT_ID);
         return wrappedFetch(`accounts/${accountID}/bank-accounts`);
     },
-    async disable(accountID: string, bankAccountID: string) {
+    /**
+     * Discontinue using a specified bank account linked to a Moov account.
+     *
+     * The `BANK_ACCOUNTS_WRITE` scope enum is required when making a request from the browser.
+     */
+    async disable(accountID: string, bankAccountID: string): Promise<void> {
         checkString(accountID).or(Err.MISSING_ACCOUNT_ID);
         checkString(bankAccountID).or(Err.MISSING_BANK_ACCOUNT_ID);
         return wrappedFetch(`accounts/${accountID}/bank-accounts/${bankAccountID}`, {
             method: "DELETE",
         });
     },
+    /**
+     * Initiate a micro deposit for a bank account linked to a Moov account.
+     *
+     * The `BANK_ACCOUNTS_WRITE` scope enum is required when making a request from the browser.
+     */
     async initMicroDeposits(accountID: string, bankAccountID: string): Promise<void> {
         checkString(accountID).or(Err.MISSING_ACCOUNT_ID);
         checkString(bankAccountID).or(Err.MISSING_BANK_ACCOUNT_ID);
@@ -84,6 +129,11 @@ export const bankAccounts = {
             method: "POST",
         });
     },
+    /**
+     * Complete the micro-deposit validation process by passing the amounts of the two transfers.
+     *
+     * The `BANK_ACCOUNTS_WRITE` scope enum is required when making a request from the browser.
+     */
     async completeMicroDeposits(accountID: string, bankAccountID: string, amounts: [number, number]): Promise<void> {
         checkString(accountID).or(Err.MISSING_ACCOUNT_ID);
         checkString(bankAccountID).or(Err.MISSING_BANK_ACCOUNT_ID);

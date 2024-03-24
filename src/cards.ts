@@ -45,16 +45,36 @@ export type LinkCard = {
     billingAddress: CardBillingAddress;
 }
 
+
+/**
+ * The Cards API.
+ */
 export const cards = {
+    /**
+     * Retrieves details for the card with the specified ID.
+     *
+     * The `CARDS_READ` scope enum is required when making a request from the browser.
+     */
     async get(accountID: string, cardID: string): Promise<Card> {
         checkString(accountID).or(Err.MISSING_ACCOUNT_ID);
         checkString(cardID).or(Err.MISSING_CARD_ID);
         return wrappedFetch(`accounts/${accountID}/cards/${cardID}`);
     },
+    /**
+     * Lists all the cards associated with a particular Moov account.
+     *
+     * The `CARDS_READ` scope enum is required when making a request from the browser.
+     */
     async list(accountID: string): Promise<Card[]> {
         checkString(accountID).or(Err.MISSING_ACCOUNT_ID);
         return wrappedFetch(`accounts/${accountID}/cards`);
     },
+    /**
+     * Links a card to a Moov account. Only use this endpoint if you have provided Moov with a
+     * copy of your PCI attestation of compliance.
+     *
+     * The `CARDS_WRITE` scope enum is required when making a request from the browser.
+     */
     async link(accountID: string, card: LinkCard): Promise<Card> {
         checkString(accountID).or(Err.MISSING_ACCOUNT_ID);
         check(card).or(Err.MISSING_CARD);
@@ -63,6 +83,11 @@ export const cards = {
             body: JSON.stringify(card),
         });
     },
+    /**
+     * Disables a card with the specified ID.
+     *
+     * The `CARDS_WRITE` scope enum is required when making a request from the browser.
+     */
     async disable(accountID: string, cardID: string): Promise<void> {
         checkString(accountID).or(Err.MISSING_ACCOUNT_ID);
         checkString(cardID).or(Err.MISSING_CARD_ID);
