@@ -276,4 +276,5 @@ dist
 # Support for Project snippet scope
 !.vscode/*.code-snippets
 
+docs
 # End of https://www.toptal.com/developers/gitignore/api/node,visualstudiocode,jetbrains+all,macos

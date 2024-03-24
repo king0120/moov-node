@@ -1,11 +1,15 @@
 {
     // Change this to match your project
     "include": [
-        "src/**/*",
+        "src/**/*"
     ],
     "compilerOptions": {
-        "types": ["node"],
+        "types": [
+            "node"
+        ],
         "esModuleInterop": true,
+        // Makes sure typedoc doesn't break
+        "skipLibCheck": true,
         "target": "ES6",
         // Tells TypeScript to read JS files, as
         // normally they are ignored as source files
@@ -20,5 +24,13 @@
         "declarationMap": true,
         // Resolve modules in Node mode
         "moduleResolution": "Node"
+    },
+    "typedocOptions": {
+        "externalPattern": "**/node_modules/**",
+
+        "entryPoints": [
+            "src/index.ts"
+        ],
+        "out": "docs"
     }
-  }
+}

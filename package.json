@@ -25,6 +25,7 @@
   "scripts": {
     "scratchpad": "vite-node src/scratchPad.ts",
     "build": "tsup",
+    "gen-docs": "typedoc",
     "test": "vitest"
   },
   "devDependencies": {
@@ -33,6 +34,7 @@
     "rollup-plugin-node-externals": "^7.1.0",
     "tsup": "^8.0.2",
     "typedoc": "^0.25.12",
+    "typedoc-theme-category-nav": "^0.0.3",
     "typescript": "^4.5.5",
     "vitest": "^1.4.0"
   },

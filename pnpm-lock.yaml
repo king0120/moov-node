@@ -25,6 +25,9 @@ devDependencies:
   typedoc:
     specifier: ^0.25.12
     version: 0.25.12(typescript@4.9.5)
+  typedoc-theme-category-nav:
+    specifier: ^0.0.3
+    version: 0.0.3(typedoc@0.25.12)
   typescript:
     specifier: ^4.5.5
     version: 4.9.5
@@ -1960,6 +1963,15 @@ packages:
   /type-detect@4.0.8:
     resolution: {integrity: sha512-0fr/mIH1dlO+x7TlcMy+bIDqKPsw/70tVyeHW787goQjhmqaZe10uwLujubK9q9Lg6Fiho1KUKDYz0Z7k7g5/g==}
     engines: {node: '>=4'}
+    dev: true
+
+  /typedoc-theme-category-nav@0.0.3(typedoc@0.25.12):
+    resolution: {integrity: sha512-ADTf9iVuNHzc0T2i7Qw4ah3I6fXZehEsQVyfY2HZBchfbLk+8/5v5dDC0yDqHa5aJ5vg6+OjOMHmmzjr8FQMFg==}
+    engines: {node: '>= 18'}
+    peerDependencies:
+      typedoc: ^0.25.6
+    dependencies:
+      typedoc: 0.25.12(typescript@4.9.5)
     dev: true
 
   /typedoc@0.25.12(typescript@4.9.5):
