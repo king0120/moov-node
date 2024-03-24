@@ -19,7 +19,9 @@
     "email": "jamieking@flashtract.com"
   },
   "license": "Apache-2.0",
-  "files": ["dist/**/*"],
+  "files": [
+    "dist/**/*"
+  ],
   "scripts": {
     "scratchpad": "vite-node src/scratchPad.ts",
     "build": "tsup",
@@ -30,6 +32,7 @@
     "@types/node": "^20.11.30",
     "rollup-plugin-node-externals": "^7.1.0",
     "tsup": "^8.0.2",
+    "typedoc": "^0.25.12",
     "typescript": "^4.5.5",
     "vitest": "^1.4.0"
   },
