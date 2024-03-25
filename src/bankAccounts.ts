@@ -9,6 +9,7 @@ export interface BankAccountAdd {
     accountNumber: string;
     bankAccountType?: 'checking' | 'savings' | 'unknown';
 }
+
 export interface BankAccount {
     // Bank Account identifier
     bankAccountID: string;

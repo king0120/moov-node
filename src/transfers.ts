@@ -18,7 +18,7 @@ export const transfers = {
      *
      * The `TRANSFERS_WRITE` scope enum is required when making a request from the browser.
      */
-    async create(transfer: TransferCreate, idempotencyKey: string): Promise<TransferResponse> {
+    async create(transfer: TransferCreate, idempotencyKey?: string): Promise<TransferResponse> {
         check(transfer).or(Err.MISSING_TRANSFER);
         idempotencyKey = idempotencyKey || randomUUID();
         return wrappedFetch(`transfers`, {
