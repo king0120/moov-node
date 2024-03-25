@@ -1,15 +1,15 @@
 {
   "name": "@king0120/moov-api",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "type": "module",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "publishConfig": {
     "access": "public"
   },
   "description": "Zero dependency SDK for working with Moov Financial",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.mts",
   "engines": {
-    "node": ">=20"
+    "node": ">=18"
   },
   "keywords": [
     "nodejs",
