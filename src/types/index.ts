@@ -112,4 +112,8 @@ export interface Account {
     settings: AccountSettings | null;
     createdOn: string;
     updatedOn: string;
+    "termsOfService": {
+        "acceptedDate": string,
+        "acceptedIP": string
+    },
 }
