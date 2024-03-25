@@ -36,7 +36,7 @@ export const bankAccounts = {
      *
      * The `BANK_ACCOUNTS_WRITE` scope enum is required when making a request from the browser.
      */
-    async link(accountID: string, bankAccount: BankAccountAdd, plaidToken: string, mxAuthorizationCode: string): Promise<BankAccount> {
+    async link(accountID: string, bankAccount?: BankAccountAdd, plaidToken?: string, mxAuthorizationCode?: string): Promise<BankAccount> {
         let payload = {};
         if (!accountID) {
             console.log(Err.MISSING_ACCOUNT_ID);
