@@ -1,18 +1,13 @@
 import {Buffer} from 'buffer';
-import * as dotenv from 'dotenv'
 
-dotenv.config()
-
+const publicKey = process.env.MOOV_PUBLIC_KEY;
+const secretKey = process.env.MOOV_SECRET_KEY;
+const accountId = process.env.MOOV_ACCOUNT_ID;
+if (!publicKey || !secretKey || !accountId) {
+    throw new Error('Missing credentials');
+}
 const baseUrl = "https://api.moov.io";
 export const wrappedFetchBase = async (url: string, options?: RequestInit) => {
-    const publicKey = process.env.MOOV_PUBLIC_KEY;
-    const secretKey = process.env.MOOV_SECRET_KEY;
-    const accountId = process.env.MOOV_ACCOUNT_ID;
-    console.log({
-        publicKey,
-        secretKey,
-        accountId
-    })
     if (!publicKey || !secretKey || !accountId) {
         throw new Error('Missing credentials');
     }

@@ -1,6 +1,6 @@
 {
   "name": "@king0120/moov-api",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "publishConfig": {
     "access": "public"
   },
@@ -38,7 +38,5 @@
     "typescript": "^4.5.5",
     "vitest": "^1.4.0"
   },
-  "dependencies": {
-    "dotenv": "16.4.5"
-  }
+  "dependencies": {}
 }
